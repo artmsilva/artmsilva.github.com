@@ -1,10 +1,10 @@
 ---
 const { photo } = Astro.props;
 
-import { Image } from "@astrojs/image/components";
+import { Image } from "astro:assets";
 
 const color = photo.color;
-const width = 400;
+
 const alt = photo.description;
 const title = photo.description;
 const href = photo.links.html;
@@ -12,6 +12,10 @@ const src = photo.urls.small;
 const likes = photo.likes;
 const downloads = photo.statistics.totalDownloads;
 const views = photo.statistics.totalViews;
+
+const width = 400;
+const aspectRatio = photo.width / photo.height;
+const height = 400 / aspectRatio;
 ---
 
 <article>
@@ -21,7 +25,7 @@ const views = photo.statistics.totalViews;
         alt={alt}
         width={width}
         src={src}
-        aspectRatio={`${photo.width}:${photo.height}`}
+        height={height}
         quality={100}
         format="avif"
       />

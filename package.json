@@ -10,7 +10,7 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@astrojs/image": "latest",
-    "astro": "latest"
+    "@biomejs/biome": "^1.9.4",
+    "astro": "5.2.1"
   }
 }
