@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/artmsilva/artmsilva.com/compare/v1.11.0...v1.12.0) (2025-01-31)
+
+
+### ✨ Features
+
+* update to latest astro ([73c2371](https://github.com/artmsilva/artmsilva.com/commit/73c2371f27dabdde4f2a9b598fac5af6bde9929e))
+
 ## [1.11.0](https://github.com/artmsilva/artmsilva.com/compare/v1.10.2...v1.11.0) (2023-02-03)
 
 
