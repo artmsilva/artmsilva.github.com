@@ -7,6 +7,7 @@ import { Image } from "astro:assets";
     <Image
       width={150}
       height={150}
+      class="floating-head"
       src="/android-chrome-512x512.png"
       alt="Photo of Arturo Silva"
       format="avif"
@@ -21,6 +22,65 @@ import { Image } from "astro:assets";
     </h2>
   </section>
 </header>
+
+<script>
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  function onMouseDown(event) {
+    isDragging = true;
+    const clientX = event.clientX ?? event.touches[0].clientX;
+    const clientY = event.clientY ?? event.touches[0].clientY;
+    offsetX = clientX - event.target.getBoundingClientRect().left;
+    offsetY = clientY - event.target.getBoundingClientRect().top;
+    if (event.target) {
+      event.target.style.position = 'fixed';
+      event.target.style.zIndex = '1000';
+    }
+  }
+
+  function onMouseMove(event) {
+    if (isDragging) {
+      const clientX = event.clientX ?? event.touches[0].clientX;
+      const clientY = event.clientY ?? event.touches[0].clientY;
+      event.target.style.left = `${clientX - offsetX}px`;
+      event.target.style.top = `${clientY - offsetY}px`;
+      keepInBounds(event.target);
+    }
+  }
+
+  function onMouseUp(event) {
+    isDragging = false;
+  }
+
+  function keepInBounds(element) {
+    const rect = element.getBoundingClientRect();
+    const parentRect = document.documentElement.getBoundingClientRect();
+    element.style.left = `${Math.max(parentRect.left, Math.min(parentRect.right - rect.width, rect.left))}px`;
+    element.style.top = `${Math.max(parentRect.top, Math.min(parentRect.bottom - rect.height, rect.top))}px`;
+  }
+
+  function addEventListeners(eventType, downHandler, moveHandler, upHandler) {
+    document.addEventListener(eventType + 'start', (event) => {
+      if (event?.target instanceof HTMLElement && event.target.classList.contains('floating-head')) {
+        downHandler(event.touches ? event.touches[0] : event);
+      }
+    });
+    document.addEventListener(eventType + 'move', (event) => {
+      if (isDragging) {
+        moveHandler(event.touches ? event.touches[0] : event);
+      }
+    });
+    document.addEventListener(eventType + 'end', (event) => {
+      if (isDragging) {
+        upHandler(event.changedTouches ? event.changedTouches[0] : event);
+      }
+    });
+  }
+
+  addEventListeners('mouse', onMouseDown, onMouseMove, onMouseUp);
+  addEventListeners('touch', onMouseDown, onMouseMove, onMouseUp);
+</script>
 
 <style>
   :root {
