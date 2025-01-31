@@ -15,4 +15,4 @@ npm start
 
 ## Deploying
 
-Vercel is used for deployment. The `main` branch is automatically deployed to production.
+Vercel is used for deployment. The `prod` branch is automatically deployed to production.
