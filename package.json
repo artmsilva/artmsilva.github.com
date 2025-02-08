@@ -13,7 +13,7 @@
 	},
 	"devDependencies": {
 		"@biomejs/biome": "^1.9.4",
-		"astro": "5.2.1"
+		"astro": "5.2.5"
 	},
 	"packageManager": "pnpm@9.1.0+sha1.217063ce3fcbf44f3051666f38b810f1ddefee4a"
 }
