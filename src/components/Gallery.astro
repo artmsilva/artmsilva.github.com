@@ -30,16 +30,13 @@ const photos = await getPhotos();
 
 <style>
   section {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30vw, 30vw));
+    gap: 1rem;
 
-  section::-webkit-scrollbar {
-    display: none;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
   }
 </style>
