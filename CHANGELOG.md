@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.1](https://github.com/artmsilva/artmsilva.com/compare/v1.12.0...v1.12.1) (2025-02-09)
+
+
+### 🐛 Bug Fixes
+
+* remove twitter and instagram lolz ([382e8c7](https://github.com/artmsilva/artmsilva.com/commit/382e8c75dc8e50ff66137016cb951e334d219350))
+
 ## [1.12.0](https://github.com/artmsilva/artmsilva.com/compare/v1.11.0...v1.12.0) (2025-01-31)
 
 
